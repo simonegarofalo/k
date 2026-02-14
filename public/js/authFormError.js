@@ -12,7 +12,7 @@ export function showFormError(form, message) {
 
     const closeBtn = document.createElement("button");
     closeBtn.type = "button";
-    closeBtn.textContent = "X";
+    closeBtn.textContent = "x";
     closeBtn.className = "form-error-close secondary-button";
 
     closeBtn.addEventListener("click", () => {
