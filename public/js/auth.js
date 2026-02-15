@@ -40,7 +40,7 @@ if (registerForm) {
         return;
       }
 
-      showFormSuccess(registerForm, "Registration successful! Redirecting to login...");
+      showFormSuccess(registerForm, "Registration successful..");
 
       setTimeout(() => {
         window.location.href = "/index.html";

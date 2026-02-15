@@ -54,9 +54,11 @@ select{
   min-height: 2.5rem;
   padding: 0.5rem 1rem;
   border: 1px solid #000000;
+  font-size: 1rem;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: 1px solid var(--black);
 }
 
@@ -147,6 +149,7 @@ button:hover {
 .logout-button:hover {
   background-color: red;
   border: none;
+  color: var(--white);
 }
 
 .logout-button img {
@@ -355,8 +358,8 @@ button:hover {
   top: 50%;
   left: 0.75rem;
   transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 #search-input {
@@ -378,6 +381,8 @@ button:hover {
 
 #sort-select {
   background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 0;
 }
 
 @media(max-width: 450px) {
@@ -405,6 +410,11 @@ button:hover {
   }
   .auth-footer-links {
     font-size: 0.8rem;
+  }
+  input,
+  button,
+  select {
+    min-height: 3rem;
   }
 }
 @media (min-width: 600px) and (max-width: 900px) {
