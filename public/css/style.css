@@ -57,7 +57,8 @@ select{
   font-size: 1rem;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: 1px solid var(--black);
 }
 
@@ -148,6 +149,7 @@ button:hover {
 .logout-button:hover {
   background-color: red;
   border: none;
+  color: var(--white);
 }
 
 .logout-button img {
@@ -379,6 +381,8 @@ button:hover {
 
 #sort-select {
   background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 0;
 }
 
 @media(max-width: 450px) {
