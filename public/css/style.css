@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
   --black: #0d1117;
   --white: #ffffff;
@@ -7,7 +9,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Roboto Mono', sans-serif;
   font-weight: 300;
 }
 
@@ -51,12 +53,15 @@ button,
 select{
   min-height: 2.5rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #c5c5c5;
-  border-radius: 5px;
+  border: 1px solid #000000;
+}
+
+input:focus {
+  outline: 1px solid var(--black);
 }
 
 button {
-  background-color: #1c8139;
+  background-color: var(--black);
   color: #ffffff;
   cursor: pointer;
   transition: ease-in 0.1s;
@@ -64,7 +69,8 @@ button {
 }
 
 button:hover {
-  background-color: #1c7929;
+  background-color: #6EFF1A;
+  color: #000000;
 }
 
 .form-title {
@@ -86,10 +92,6 @@ button:hover {
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1rem;
-}
-
-.app-page {
-  background-color: #f5f5f5;
 }
 
 .app-layout {
@@ -130,7 +132,7 @@ button:hover {
   background-color: var(--white);
   font-size: 0.875rem;
   padding: 1.5rem 1rem;
-  border-radius: 5px;
+  border: 1px solid var(--black) ;
 }
 
 .logout-button {
@@ -157,7 +159,6 @@ button:hover {
 }
 
 .app-header {
-  text-align: center;
   margin-bottom: 2rem;
 }
 
@@ -185,7 +186,8 @@ button:hover {
 }
 
 #button-add-new:hover {
-  opacity: 0.9;
+  background-color: #5cff3b;
+  color: var(--black);
 }
 
 .list-wrapper {
@@ -203,9 +205,13 @@ button:hover {
   justify-content: space-between;
   gap: 0.5rem;
   background-color: var(--white);
-  border-radius: 5px;
   padding: 1rem;
   position: relative;
+  border: 1px solid var(--black);
+}
+
+.list-element:hover {
+  background-color: #5cff3b;
 }
 
 .list-element a {
@@ -257,7 +263,6 @@ button:hover {
   transform: translate(-50%, -50%);
   background: white;
   padding: 2rem;
-  border-radius: 10px;
   z-index: 1001;
   text-align: center;
 }
@@ -297,7 +302,6 @@ button:hover {
   align-items: center;
   background: #e6fffa;
   padding: 0.5rem;
-  border-radius: 5px;
   border: 2px solid #38b2ac;
   color: #065f46;
 }
@@ -312,7 +316,6 @@ button:hover {
   align-items: center;
   background: #ffebe8;
   padding: 0.5rem;
-  border-radius: 5px;
   border: 2px solid #ffc1c0;
   width: 90%;
   font-size: 0.9rem;
@@ -373,6 +376,10 @@ button:hover {
   width: 24px;
 }
 
+#sort-select {
+  background-color: #ffffff;
+}
+
 @media(max-width: 450px) {
   .filters-wrapper {
     flex-direction: column;
@@ -387,6 +394,19 @@ button:hover {
   }
 }
 
+@media(max-width: 599px){
+    .login-section,
+  .register-section {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  .form-title {
+    font-size: 1.4rem;
+  }
+  .auth-footer-links {
+    font-size: 0.8rem;
+  }
+}
 @media (min-width: 600px) and (max-width: 900px) {
   .login-section,
   .register-section {
