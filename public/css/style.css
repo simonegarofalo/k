@@ -44,7 +44,7 @@ a {
 
 .login-section img,
 .register-section img {
-  width: 70px;
+  width: 40px;
   margin-bottom: 1rem;
 }
 
@@ -106,10 +106,17 @@ button:hover {
 
 .app-navbar {
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 1rem 0;
+  border-bottom: .5px solid #c5c5c5;
+}
+
+.profile-button-wrapper {
+  grid-column-start: 11;
   display: flex;
   justify-content: end;
-  padding: 1rem;
-  border-bottom: .5px solid #c5c5c5;
+  position: relative;
 }
 
 #profile-button {
@@ -117,7 +124,7 @@ button:hover {
   min-width: unset;
   min-height: unset;
   background-color: transparent;
-  background-image: url("../assets/user-icon.svg");
+  background-image: url("../assets/k.png");
   background-position: center;
   background-repeat: no-repeat;
   width: 30px;
@@ -129,12 +136,13 @@ button:hover {
 
 #user-data-wrapper {
   position: absolute;
-  top: 4rem;
-  right: 1rem;
+  top: 2.5rem;
+  right: 0;
   background-color: var(--white);
   font-size: 0.875rem;
   padding: 1.5rem 1rem;
-  border: 1px solid var(--black) ;
+  border: 1px solid var(--black);
+  min-width: 250px;
 }
 
 .logout-button {
@@ -400,7 +408,7 @@ button:hover {
 }
 
 @media(max-width: 599px){
-    .login-section,
+  .login-section,
   .register-section {
     grid-column-start: 2;
     grid-column-end: 12;
