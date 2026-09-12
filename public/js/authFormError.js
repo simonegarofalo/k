@@ -6,14 +6,17 @@ export function showFormError(form, message) {
   if (!errorBox) {
     errorBox = document.createElement("div");
     errorBox.className = "form-error";
+    errorBox.setAttribute("role", "alert");
+    errorBox.setAttribute("aria-live", "assertive");
 
     const text = document.createElement("span");
     text.className = "form-error-text";
 
     const closeBtn = document.createElement("button");
     closeBtn.type = "button";
-    closeBtn.textContent = "x";
+    closeBtn.textContent = "✕";
     closeBtn.className = "form-error-close secondary-button";
+    closeBtn.setAttribute("aria-label", "Close error message");
 
     closeBtn.addEventListener("click", () => {
       errorBox.remove();

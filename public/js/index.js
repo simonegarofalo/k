@@ -32,7 +32,12 @@ function renderLink(link) {
   let newElementLink = document.createElement("a");
   newElementLink.href = link.url;
   newElementLink.setAttribute("target", "_blank");
+  newElementLink.setAttribute("rel", "noopener noreferrer");
   newElementLink.textContent = link.title || link.url;
+  const newTabHint = document.createElement("span");
+  newTabHint.className = "sr-only";
+  newTabHint.textContent = " (opens in new tab)";
+  newElementLink.appendChild(newTabHint);
   let newElementParagraph = document.createElement("p");
   newElementParagraph.classList.add("list-element-url");
   newElementParagraph.textContent = link.url;
@@ -53,6 +58,7 @@ function createDeleteButton(link) {
   deleteBtn.style.backgroundSize = "contain";
   deleteBtn.style.width = "24px";
   deleteBtn.style.height = "24px";
+  deleteBtn.setAttribute("aria-label", `Delete "${link.title || link.url}"`);
 
   deleteBtn.addEventListener("click", () => {
   openDeleteModal(link);
@@ -62,18 +68,23 @@ function createDeleteButton(link) {
 }
 
 function openDeleteModal(link) {
-  // Overlay
+  const previouslyFocused = document.activeElement;
+
   const overlay = document.createElement("div");
   overlay.classList.add("modal-overlay");
 
-  // Blocca scroll della pagina
   document.body.style.overflow = "hidden";
 
-  // Modale
   const alertBox = document.createElement("div");
   alertBox.classList.add("delete-modal");
-  alertBox.textContent = "Are you sure?";
+  alertBox.setAttribute("role", "dialog");
+  alertBox.setAttribute("aria-modal", "true");
+  alertBox.setAttribute("aria-labelledby", "delete-modal-title");
   alertBox.style.zIndex = "1001";
+
+  const titleEl = document.createElement("p");
+  titleEl.id = "delete-modal-title";
+  titleEl.textContent = "Are you sure?";
 
   const btnWrapper = document.createElement("div");
   btnWrapper.classList.add("btns-wrapper");
@@ -87,26 +98,47 @@ function openDeleteModal(link) {
   btnCancel.textContent = "Cancel";
 
   btnWrapper.append(btnConfirm, btnCancel);
-  alertBox.appendChild(btnWrapper);
+  alertBox.append(titleEl, btnWrapper);
 
   document.body.appendChild(overlay);
   document.body.appendChild(alertBox);
 
-  btnConfirm.addEventListener("click", async () => {
-    await deleteLink(link.id);
+  function closeModal() {
     overlay.remove();
     alertBox.remove();
     document.body.style.overflow = "";
+    document.removeEventListener("keydown", handleKeydown);
+    if (previouslyFocused) previouslyFocused.focus();
+  }
+
+  function trapFocus(e) {
+    const focusable = Array.from(alertBox.querySelectorAll("button"));
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+
+  function handleKeydown(e) {
+    if (e.key === "Escape") { closeModal(); return; }
+    if (e.key === "Tab") trapFocus(e);
+  }
+
+  document.addEventListener("keydown", handleKeydown);
+
+  btnConfirm.addEventListener("click", async () => {
+    await deleteLink(link.id);
+    closeModal();
     importLinks();
   });
 
-  btnCancel.addEventListener("click", () => {
-    overlay.remove();
-    alertBox.remove();
-    document.body.style.overflow = "";
-  });
+  btnCancel.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
 
-  overlay.addEventListener("click", (e) => e.stopPropagation());
+  btnCancel.focus();
 }
 
 

@@ -10,10 +10,12 @@ export function showFormSuccess(form, message) {
   if (!successBox) {
     successBox = document.createElement("div");
     successBox.className = "form-success";
+    successBox.setAttribute("role", "status");
+    successBox.setAttribute("aria-live", "polite");
 
     form.prepend(successBox);
   }
 
-  successBox.textContent = message; 
+  successBox.textContent = message;
 }
 

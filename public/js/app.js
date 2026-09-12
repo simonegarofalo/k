@@ -24,6 +24,8 @@ const profileButton = document.getElementById("profile-button");
 const userDataWrapper = document.getElementById("user-data-wrapper");
 
 profileButton.addEventListener("click", () => {
+  const isExpanded = profileButton.getAttribute("aria-expanded") === "true";
+  profileButton.setAttribute("aria-expanded", String(!isExpanded));
   userDataWrapper.classList.toggle("hidden");
 });
 

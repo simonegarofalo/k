@@ -6,6 +6,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/k.png" />
     <title>Create your account | Kangaroo</title>
     <meta name="description" content="Create your account" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kangaroo-app.xyz/" />
+    <meta property="og:title" content="Kangaroo — Bookmark manager" />
+    <meta property="og:description" content="Save, filter and sort your links in one place. Save, filter and sort your bookmarks in one place." />
+    <meta property="og:image" content="https://kangaroo-app.xyz/assets/og-kangaroo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kangaroo interface showing a list of saved bookmarks with the keyword filter" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Kangaroo" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="auth-page">
@@ -14,9 +25,11 @@
         <img src="./assets/k.png" alt="kangaroo logo">
         <h2 class="form-title">Create your account</h2>
         <form id="register-form">
-          <input type="email" id="register-email" placeholder="Email" required>
-          <input type="password" id="register-password" placeholder="Password" required>
-          <button>Sign up</button>
+          <label for="register-email" class="sr-only">Email address</label>
+          <input type="email" id="register-email" placeholder="Email" autocomplete="email" required>
+          <label for="register-password" class="sr-only">Password</label>
+          <input type="password" id="register-password" placeholder="Password" autocomplete="new-password" required>
+          <button type="submit">Sign up</button>
         </form>
         <p class="auth-footer-links">Already have an account? <a href="/index.html">Sign in</a></p>
       </section>

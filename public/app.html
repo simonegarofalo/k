@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/k.png" />
-    <title>Kangaroo | Keep everything in one safe place</title
+    <title>Kangaroo | Keep everything in one safe place</title>
     <meta name="description" content="Kangaroo | Keep everything in one safe place" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="app-page">
     <nav class="app-navbar">
       <div class="profile-button-wrapper">
-        <button id="profile-button"></button>
+        <button id="profile-button" aria-label="Open profile menu" aria-expanded="false" aria-controls="user-data-wrapper"></button>
         <div id="user-data-wrapper" class="hidden">
           <p>User:
             <span id="user-email"></span>
           </p>
-          <button id="logout-button" class="logout-button"><img src="./assets/logout-icon.svg" alt="Sign out icon"><span>Sign out</span></button> 
+          <button id="logout-button" class="logout-button"><img src="./assets/logout-icon.svg" alt="" aria-hidden="true"><span>Sign out</span></button>
         </div>
       </div>
     </nav>
@@ -27,19 +27,22 @@
           <p>Keep everything in a safe place</p>
         </div>
         <div class="form-wrapper">
-          <form id="main-form"  method="POST">
-            <input id="input-url" type="url" name="input-url" placeholder="Enter the url" required>
-            <input id="input-title" type="text" name="input-title" placeholder="Customize it (optional)">
+          <form id="main-form" method="POST">
+            <label for="input-url" class="sr-only">URL</label>
+            <input id="input-url" type="url" name="input-url" placeholder="Enter the url" autocomplete="off" required>
+            <label for="input-title" class="sr-only">Custom title (optional)</label>
+            <input id="input-title" type="text" name="input-title" placeholder="Customize it (optional)" autocomplete="off">
             <button id="button-add-new" type="submit">Add</button>
           </form>
         </div>
         <div class="filters-wrapper">
           <div class="search-wrapper">
-            <img src="./assets/lente-icon.svg" alt="Search icon">
+            <img src="./assets/lente-icon.svg" alt="" aria-hidden="true">
+            <label for="search-input" class="sr-only">Search links</label>
             <input type="text" id="search-input" placeholder="Search links...">
           </div>
           <div class="sort-wrapper">
-            <label for="sort-select"><img src="./assets/filter-icon.png" alt="Filter icon"></label>
+            <label for="sort-select"><img src="./assets/filter-icon.png" alt="Sort by:"></label>
             <select id="sort-select">
               <option value="date_desc">Latest</option>
               <option value="date_asc">Oldest</option>

@@ -6,17 +6,30 @@
      <link rel="icon" type="image/png" sizes="32x32" href="./assets/k.png" />
     <title>Sign in to Kagaroo | Kangaroo</title>
     <meta name="description" content="Sign in to Kangaroo" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kangaroo-app.xyz/" />
+    <meta property="og:title" content="Kangaroo — Bookmark manager" />
+    <meta property="og:description" content="Save, filter and sort your links in one place. Save, filter and sort your bookmarks in one place." />
+    <meta property="og:image" content="https://kangaroo-app.xyz/assets/og-kangaroo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kangaroo interface showing a list of saved bookmarks with the keyword filter" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Kangaroo" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="auth-page">
     <main class="grid">
       <section class="login-section">
-        <img src="./assets/k.png" alt="kngaroo logo" style="width:40px">
+        <img src="./assets/k.png" alt="Kangaroo logo" style="width:40px">
         <h2 class="form-title">Sign in to Kangaroo</h2>
         <form id="login-form">
-          <input type="email" id="login-email" placeholder="Email">
-          <input type="password" id="login-password" placeholder="Password">
-          <button>Log in</button>
+          <label for="login-email" class="sr-only">Email address</label>
+          <input type="email" id="login-email" placeholder="Email" autocomplete="email" required>
+          <label for="login-password" class="sr-only">Password</label>
+          <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" required>
+          <button type="submit">Log in</button>
         </form>
         <p class="auth-footer-links">New to Kangaroo? <a href="/register.html">Create an account</a></p>
       </section>
